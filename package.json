@@ -11,8 +11,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "atpl": "^0.9.3",
+    "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "mysql": "^2.14.1"
+    "morgan": "^1.8.2",
+    "mysql": "^2.14.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
