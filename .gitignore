@@ -59,3 +59,5 @@ typings/
 
 #configuration
 config.js
+static/
+templates/

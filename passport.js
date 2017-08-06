@@ -1,5 +1,4 @@
 'use strict'
-'use strict'
 
 const LocalStrategy = require('passport-local').Strategy,
 	MySQL = require('./models/connect');
@@ -17,7 +16,7 @@ module.exports = passport =>{
 
 		MySQL.query('SELECT * FROM account.account WHERE id=?', [id], (err,result) =>{
 			if (err) return done(err);
-			done(err,result);
+			done(err,result[0]);
 
 		});
 

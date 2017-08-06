@@ -9,7 +9,10 @@ const express = require('express'),
 	passport = require('passport'),
 	session = require('express-session'),
 	config = require('./config'),
-	cookieParser = require('cookie-parser');
+	cookieParser = require('cookie-parser'),
+	adminRoute = require('./routes/admin'),
+	isAuth = require('./middleware/auth'),
+	cors = require('cors');
 
 require('./passport')(passport);
 //app.use(morgan('dev'));
@@ -21,6 +24,7 @@ app.use('/', express.static(__dirname + '/static'));
 //Indicamos que usaremos sessiones para almacenar los usuarios
 app.use(cookieParser(config.SECRET_SESSION));
 //Peticiones HTTP
+
 app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 app.use(session({
@@ -31,27 +35,43 @@ app.use(session({
 }));
 
 
+app.use(cors());
+
+
 //passport
 
 app.use(passport.initialize());
 app.use(passport.session());
+//Error 404
 
 
-app.get('/',(req,res,next) =>{
-
-	if (req.login) res.redirect('/admin');
-	next();
-
-	}, (req,res) =>{
-
+//Inicio.
+app.get('/',(req,res) =>{
+	
+	if (req.isAuthenticated()) res.redirect('/admin');
 	res.render('auth/login' , {tittle: 'Metin2 Login'});
+
 });
+
 
 app.post('/login',passport.authenticate('local', { successRedirect: '/admin',
                                    failureRedirect: '/',
                                    failureFlash: true })
 								   
 );
+
+app.get('/logout', (req,res) =>{
+	
+	req.logout();
+	res.redirect('/');
+
+});
+app.use('/admin',isAuth, adminRoute);
+app.use((req,res) =>{
+
+	res.status(404).render('404');
+
+});
 //Motor de plantillas
 app.engine('html', atpl.__express);
 app.set('view engine', 'html');
