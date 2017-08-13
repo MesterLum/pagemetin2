@@ -7,5 +7,7 @@ const express = require('express'),
 
 route.get('/', controllers.index);
 
+route.get('/users/list/:filter?', controllers.listAccounts);
+
 
 module.exports = route;

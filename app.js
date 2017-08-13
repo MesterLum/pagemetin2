@@ -12,12 +12,18 @@ const express = require('express'),
 	cookieParser = require('cookie-parser'),
 	adminRoute = require('./routes/admin'),
 	isAuth = require('./middleware/auth'),
-	cors = require('cors');
+	cors = require('cors'),
+	routeProfile = require('./routes/profile'),
+	favicon = require('serve-favicon');
 
 require('./passport')(passport);
 //app.use(morgan('dev'));
 //Configuracion ruta static
 app.use('/', express.static(__dirname + '/static'));
+
+app.use(favicon(__dirname + '/static/favicon.ico'));
+
+
 
 
 
@@ -29,7 +35,7 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 app.use(session({
   secret: config.SECRET_SESSION,
-  resave: false,
+  resave: true,
   saveUninitialized: true
   //cookie: { secure: true }
 }));
@@ -66,7 +72,12 @@ app.get('/logout', (req,res) =>{
 	res.redirect('/');
 
 });
+//Rutas para el panel admin
+
 app.use('/admin',isAuth, adminRoute);
+app.use('/admin/profile',isAuth, routeProfile);
+
+//
 app.use((req,res) =>{
 
 	res.status(404).render('404');
@@ -76,6 +87,7 @@ app.use((req,res) =>{
 app.engine('html', atpl.__express);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/templates');
+
 
 
 
