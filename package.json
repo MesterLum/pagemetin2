@@ -20,6 +20,7 @@
     "mysql": "^2.14.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "push.js": "^1.0.4",
     "req-flash": "0.0.3",
     "serve-favicon": "^2.4.3"
   },

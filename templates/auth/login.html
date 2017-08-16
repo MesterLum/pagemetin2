@@ -11,7 +11,7 @@
         <meta content="" name="description" />
         <meta content="" name="author" />
         <!-- BEGIN GLOBAL MANDATORY STYLES -->
-
+        <script src="/js/push.min.js"></script>
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
@@ -36,11 +36,22 @@
     <!-- END HEAD -->
 
     <body class=" login">
+        <script>
+       Push.create("Hello world!", {
+    body: "How's it hangin'?",
+    icon: '/icon.png',
+    timeout: 4000,
+    onClick: function () {
+        window.focus();
+        this.close();
+    }
+});
+        </script>
         <div class="menu-toggler sidebar-toggler"></div>
         <!-- END SIDEBAR TOGGLER BUTTON -->
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
+            <a href="/">
                 <img src="../assets/pages/img/logo-big.png" alt="" /> </a>
         </div>
         <!-- END LOGO -->

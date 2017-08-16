@@ -1,20 +1,21 @@
 'use strict'
 
 const app = require('./app'),
-	MySQL = require('./models/connect'),
+	pool = require('./models/connect'),
 	config = require('./config');
 
 
 
-MySQL.connect(err =>{
+pool.getConnection((err, MySQL) =>{
 
 	if (err) throw err;
-	console.log('Base de datos conectada');
-
+	console.log('BD INICIADA');
 	app.listen(config.PORT, function (){
 
 		console.log(`Servidor iniciado`);
+		MySQL.release();
 
 	});
 
 });
+

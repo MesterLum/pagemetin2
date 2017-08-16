@@ -4,7 +4,7 @@ const MySQL = require('mysql'),
 	config = require('../config');
 
 
-const connection = MySQL.createConnection({
+const pool = MySQL.createPool({
 
 	host : config.DB_HOST,
 	user : config.DB_USER,
@@ -16,4 +16,4 @@ const connection = MySQL.createConnection({
 
 
 
-module.exports = connection;
+module.exports = pool;
