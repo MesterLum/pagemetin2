@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{%block tittle%}Inicio{% endblock %}
+{%block subtittle%}Dashboard{% endblock %}
+
+{% block content %}
+                    <!-- BEGIN DASHBOARD STATS 1-->
+					
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat blue">
+                                <div class="visual">
+                                    <i class="fa fa-comments"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        <span data-counter="counterup" data-value="{{data[0]}}"></span>
+                                    </div>
+                                    <div class="desc"> Cuentas Registradas </div>
+                                </div>
+                                <a class="more" href="/admin/users/list/"> Ver todas
+                                    <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat red">
+                                <div class="visual">
+                                    <i class="fa fa-bar-chart-o"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        <span data-counter="counterup" data-value="{{data[1]}}">0</span></div>
+                                    <div class="desc"> Players Registrados </div>
+                                </div>
+                                <a class="more" href="javascript:;"> Ver todos
+                                    <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat green">
+                                <div class="visual">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number">
+                                        <span data-counter="counterup" data-value="{{data[2]}}">0</span>
+                                    </div>
+                                    <div class="desc"> GM's </div>
+                                </div>
+                                <a class="more" href="javascript:;"> Ver detalles
+                                    <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="dashboard-stat purple">
+                                <div class="visual">
+                                    <i class="fa fa-globe"></i>
+                                </div>
+                                <div class="details">
+                                    <div class="number"> +
+                                        <span data-counter="counterup" data-value="{{data[3]}}"></span> </div>
+                                    <div class="desc"> Jugadores Online </div>
+                                    
+                                </div>
+                                <a class="more" href="javascript:;"> Ver detalles
+                                    <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+{% endblock %}
+

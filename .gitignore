@@ -57,7 +57,4 @@ typings/
 # dotenv environment variables file
 .env
 
-#configuration
-config.js
-static/
-templates/
+
