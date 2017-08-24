@@ -24,9 +24,6 @@ app.use('/', express.static(__dirname + '/static'));
 app.use(favicon(__dirname + '/static/favicon.ico'));
 
 
-
-
-
 //Indicamos que usaremos sessiones para almacenar los usuarios
 app.use(cookieParser(config.SECRET_SESSION));
 //Peticiones HTTP
@@ -83,6 +80,7 @@ app.use((req,res) =>{
 	res.status(404).render('404');
 
 });
+
 //Motor de plantillas
 app.engine('html', atpl.__express);
 app.set('view engine', 'html');
